@@ -8,7 +8,7 @@ class Main:
     def main():
 
         # Read the instance from the file
-        with open("text.txt", "r") as file:
+        with open("../sample-nuruominoboards/test-01.txt", "r") as file:
             instance = file.read()
 
         board = Board(instance)
