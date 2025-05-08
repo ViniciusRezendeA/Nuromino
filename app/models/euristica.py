@@ -1,6 +1,6 @@
-from models.Board import Board
-from models.Figure import Figure
-from models.Region import Region
+from .board import Board
+from .figure import Figure
+from .region import Region
 
 
 class Euristica:

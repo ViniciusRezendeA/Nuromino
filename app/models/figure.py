@@ -1,4 +1,4 @@
-from models.Region import Region
+from .region import Region
 
 
 class Figure:

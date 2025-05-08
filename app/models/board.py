@@ -1,5 +1,5 @@
-from models.Region import Region
-from models.Cell import Cell
+from .region import Region
+from .cell import Cell
 
 
 class Board:
@@ -50,4 +50,3 @@ class Board:
 
     def __repr__(self):
         return "\n".join(" ".join(str(cell) for cell in row) for row in self.board)
-    

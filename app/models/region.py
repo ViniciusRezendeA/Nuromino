@@ -1,4 +1,4 @@
-from models.Cell import Cell
+from .cell import Cell
 
 
 class Region:

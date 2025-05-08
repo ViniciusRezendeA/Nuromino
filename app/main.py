@@ -1,14 +1,20 @@
-from models.Board import Board
-from models.Euristica import Euristica
-from models.Figure import Figure
-from models.Region import Region
+from app.models import Board
+from app.models import Euristica
+from app.models import Region
+from app.models import Figure
+
+import os
 
 
 class Main:
     def main():
 
         # Read the instance from the file
-        with open("../sample-nuruominoboards/test-01.txt", "r") as file:
+        base_dir = os.path.dirname(
+            os.path.abspath(__file__)
+        )  # Obtém o diretório atual do script
+        file_path = os.path.join(base_dir, "boardTests", "test-01.txt")
+        with open(file_path, "r") as file:
             instance = file.read()
 
         board = Board(instance)
