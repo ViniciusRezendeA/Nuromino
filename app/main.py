@@ -1,7 +1,7 @@
-from app.models import Board
-from app.models import Euristica
-from app.models import Region
-from app.models import Figure
+from models import Board
+from models import Euristica
+from models import Region
+from models import Figure
 
 import os
 

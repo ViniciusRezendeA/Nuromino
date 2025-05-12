@@ -3,23 +3,41 @@ from .cell import Cell
 
 
 class Board:
+    """Representação interna de um tabuleiro do Puzzle Nuruomino."""
 
     def __init__(self, text: str):
         self.board = []
         self.regions = []
         self.parseInstance(text)
 
+    def adjacent_regions(self, region: int) -> list:
+        """Devolve uma lista das regiões que fazem fronteira com a região enviada no argumento."""
+        # TODO
+        pass
+
     def adjacent_positions(self, row: int, col: int) -> list:
+        """Devolve as posições adjacentes à região, em todas as direções, incluindo diagonais."""
+        # TODO
         pass
 
     def adjacent_values(self, row: int, col: int) -> list:
-        """Devolve as posições adjacentes à região, em todas as direções,
-        incluindo diagonais."""
+        """Devolve os valores das celulas adjacentes à região, em todas as direções, incluindo diagonais."""
+        # TODO
         pass
 
-    def adjacent_regions(self, region: int) -> list:
-        """Devolve os valores das celulas adjacentes à região,
-        em todas as direções, incluindo diagonais."""
+    @staticmethod
+    def parse_instance():
+        """Lê o test do standard input (stdin) que é passado como argumento
+        e retorna uma instância da classe Board.
+
+        Por exemplo:
+            $ python3 pipe.py < test-01.txt
+
+            > from sys import stdin
+            > line = stdin.readline().split()
+        """
+        # TODO
+        pass
 
     def parseInstance(self, instance: str) -> None:
 
@@ -50,3 +68,5 @@ class Board:
 
     def __repr__(self):
         return "\n".join(" ".join(str(cell) for cell in row) for row in self.board)
+
+    
