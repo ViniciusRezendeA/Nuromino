@@ -9,13 +9,17 @@ class Euristica:
 
     def resolveBoard(self) -> None:
         """Resolve as regiões com 4 células, se possível."""
-        for region in self.board.regions:
+        for (
+            region
+        ) in self.board.regions.values():  # Acessa diretamente os objetos Region
             if region.size == 4:
-                self.__checkIsSomeFigure(region)
+                self.__checkIsSomeFigure(
+                    region
+                )  # Aqui você pode passar o objeto Region
             if region.size == 5:
-                pass
+                pass  # Lógica para quando a região tem 5 células
             else:
-                pass
+                pass  # Lógica para outras situações
 
     def __checkIsSomeFigure(self, region: Region) -> bool:
         """Verifica se a região já tem uma figura atribuída."""

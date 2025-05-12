@@ -9,6 +9,3 @@ class Region:
 
     def __repr__(self):
         return f"Region(id={self.id}, cells={self.cells})"
-
-    def addFigure(self, figure: str) -> None:
-        self.figure = figure
