@@ -1,9 +1,13 @@
 class Cell:
-    def __init__(self, row, col, region, board=None):
+    def __init__(
+        self,
+        row,
+        col,
+        region,
+    ):
         self.col = col
         self.row = row
-        self.region = region 
-        self.board = board  # referência ao board
+        self.region = region
         self.figure = None  # figura atribuída
 
     def __repr__(self):

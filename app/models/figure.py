@@ -49,7 +49,7 @@ class Figure:
         normalized = sorted(
             [(cell.row - min_row, cell.col - min_col) for cell in region.cells]
         )
-        board = region.cells[0].board
+        board = region.board
         if normalized in shapes:
             # Verificar se algum vizinho direto já tem essa figura
             for cell in region.cells:
@@ -65,9 +65,9 @@ class Figure:
     def can_place_figure_without_2x2(self, region, value):
         simulated = set((cell.row, cell.col) for cell in region.cells)
 
-        if not region.cells or not region.cells[0].board:
+        if not region.cells:
             return False
-        board = region.cells[0].board
+        board = region.board
 
         def is_2x2_block_filled(r, c):
             coords = [(r, c), (r + 1, c), (r, c + 1), (r + 1, c + 1)]

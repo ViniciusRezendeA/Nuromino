@@ -88,7 +88,7 @@ class Board:
             cells = list(map(int, lines[row].split()))
             for col in range(self.cols):
                 cell_value = cells[col]
-                cell = Cell(row, col, cell_value, self)
+                cell = Cell(row, col, cell_value)
                 self.board[row][col] = cell
                 if cell_value not in discoveryRegions:
                     discoveryRegions[cell_value] = []
@@ -96,7 +96,7 @@ class Board:
 
         for region_id, cells in discoveryRegions.items():
 
-            self.regions[region_id] = Region(region_id, cells)
+            self.regions[region_id] = Region(region_id, cells, self)
 
     def get_cell(self, row, col):
         if 0 <= row < self.rows and 0 <= col < self.cols:
