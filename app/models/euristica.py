@@ -13,7 +13,7 @@ class Euristica:
             region
         ) in self.board.regions.values():  # Acessa diretamente os objetos Region
             if region.size == 4:
-                self.__checkIsSomeFigure(
+                self._fillRegionWitSize4(
                     region
                 )  # Aqui você pode passar o objeto Region
             if region.size == 5:
@@ -21,7 +21,7 @@ class Euristica:
             else:
                 pass  # Lógica para outras situações
 
-    def __checkIsSomeFigure(self, region: Region) -> bool:
+    def _fillRegionWitSize4(self, region: Region) -> bool:
         """Verifica se a região já tem uma figura atribuída."""
         Figure().hasL(region) or Figure().hasT(region) or Figure().hasI(
             region

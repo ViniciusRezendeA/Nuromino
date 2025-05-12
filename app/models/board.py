@@ -54,7 +54,7 @@ class Board:
     def adjacent_values(self, row: int, col: int) -> list:
         """Devolve os valores das celulas adjacentes à região, em todas as direções, incluindo diagonais."""
         return [
-            self.get_cell(row + dr, col + dc).value
+            self.get_cell(row + dr, col + dc).figure
             for dr in [-1, 0, 1]
             for dc in [-1, 0, 1]
             if (dr != 0 or dc != 0)

@@ -49,15 +49,13 @@ class Figure:
         normalized = sorted(
             [(cell.row - min_row, cell.col - min_col) for cell in region.cells]
         )
-
+        board = region.cells[0].board
         if normalized in shapes:
             # Verificar se algum vizinho direto já tem essa figura
             for cell in region.cells:
-                for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-                    nr, nc = cell.row + dr, cell.col + dc
-                    neighbor = cell.board.get_cell(nr, nc) if cell.board else None
-                    if neighbor and neighbor.figure == value:
-                        return False
+                adjacents_values = board.adjacent_values(cell.row, cell.col)
+                if value in adjacents_values:
+                    return False  # Encontrou um vizinho com a figura que não pode ser colocada
 
             # Verificar se ao colocar a figura, um bloco 2x2 seria formado
             return self.can_place_figure_without_2x2(region, value)
