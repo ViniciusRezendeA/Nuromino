@@ -1,4 +1,5 @@
 from .region import Region
+from itertools import combinations
 
 
 class Figure:
@@ -93,3 +94,37 @@ class Figure:
         for cell in region.cells:
             cell.set_figure(value)
         return True
+
+    def can_place_figure(self, region, value):
+        # Verifica se a figura pode ser colocada na região
+        if (
+            self.hasL(region)
+            or self.hasT(region)
+            or self.hasI(region)
+            or self.hasS(region)
+        ):
+            return True
+        return False
+
+    def fill_region(self, region: Region):
+        used_cells = set()
+        placed_any = True
+
+        while placed_any:
+            placed_any = False
+            available_cells = [
+                cell for cell in region.cells if (cell.row, cell.col) not in used_cells
+            ]
+            if len(available_cells) < 4:
+                break
+
+            for group in combinations(available_cells, 4):
+                subregion = Region(region.id, list(group), region.board)
+                for checker in [self.hasL, self.hasT, self.hasI, self.hasS]:
+                    if checker(subregion):
+                        for cell in group:
+                            used_cells.add((cell.row, cell.col))
+                        placed_any = True
+                        break
+                if placed_any:
+                    break

@@ -8,6 +8,7 @@ class Euristica:
         self.board = board
 
     def resolveBoard(self) -> None:
+        self.board.regions = self.board.regions
         """Resolve as regiões com 4 células, se possível."""
         for (
             region
@@ -16,13 +17,14 @@ class Euristica:
                 self._fillRegionWitSize4(
                     region
                 )  # Aqui você pode passar o objeto Region
-            if region.size == 5:
-                pass  # Lógica para quando a região tem 5 células
             else:
-                pass  # Lógica para outras situações
+                Figure().fill_region(region)
 
     def _fillRegionWitSize4(self, region: Region) -> bool:
         """Verifica se a região já tem uma figura atribuída."""
         Figure().hasL(region) or Figure().hasT(region) or Figure().hasI(
             region
         ) or Figure().hasS(region)
+
+    def _checkAllRegionIsConnected(self, board: Board) -> bool:
+        """Verifica se todas as regiões estão conectadas."""
