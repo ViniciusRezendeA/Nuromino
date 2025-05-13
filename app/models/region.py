@@ -9,4 +9,4 @@ class Region:
         self.board = board
 
     def __repr__(self):
-        return f"Region(id={self.id}, cells={self.cells})"
+        return f"Region(id={self.id}, cells={self.cells}, size={self.size})"

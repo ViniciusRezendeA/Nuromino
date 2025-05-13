@@ -3,7 +3,7 @@ from itertools import combinations
 
 
 class Figure:
-    def fill_region_with_figure(self, region: Region, value: str) -> bool:
+    def _fill_region_with_figure(self, region: Region, value: str) -> bool:
         """
         Verifica se a figura pode ser colocada na região e, se possível, coloca a figura.
         """
@@ -60,18 +60,18 @@ class Figure:
                 if value in board.adjacent_values(cell.row, cell.col):
                     return False
             # Verifica se ao colocar a figura, um bloco 2x2 seria formado
-            return self.can_place_figure_without_2x2(region, value)
+            return self._can_place_figure_without_2x2(region, value)
 
         return False
 
-    def can_place_figure_without_2x2(self, region: Region, value: str) -> bool:
+    def _can_place_figure_without_2x2(self, region: Region, value: str) -> bool:
         simulated = set((cell.row, cell.col) for cell in region.cells)
 
         if not region.cells:
             return False
         board = region.board
 
-        def is_2x2_block_filled(r, c):
+        def __is_2x2_block_filled(r, c):
             coords = [(r, c), (r + 1, c), (r, c + 1), (r + 1, c + 1)]
             for row, col in coords:
                 if (row, col) in simulated:
@@ -84,7 +84,7 @@ class Figure:
         for cell in region.cells:
             for dr in [-1, 0]:
                 for dc in [-1, 0]:
-                    if is_2x2_block_filled(cell.row + dr, cell.col + dc):
+                    if __is_2x2_block_filled(cell.row + dr, cell.col + dc):
                         return False
 
         for cell in region.cells:
@@ -105,7 +105,7 @@ class Figure:
 
             for group in combinations(available_cells, 4):
                 subregion = Region(region.id, list(group), region.board)
-                if self.fill_region_with_figure(subregion, None):
+                if self._fill_region_with_figure(subregion, None):
                     for cell in group:
                         used_cells.add((cell.row, cell.col))
                     placed_any = True
