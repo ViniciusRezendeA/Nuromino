@@ -94,20 +94,12 @@ class Board:
                     discoveryRegions[cell_value] = []
                 discoveryRegions[cell_value].append(cell)
 
-        # Ordena as regiões pela quantidade de células (do maior para o menor)
-        sorted_regions = sorted(
-            discoveryRegions.items(), key=lambda item: len(item[1])
-        )
+        sorted_regions = sorted(discoveryRegions.items(), key=lambda item: len(item[1]))
 
         # Reconstrói o dicionário de regiões já ordenado
         self.regions = {}
         for region_id, cells in sorted_regions:
             self.regions[region_id] = Region(region_id, cells, self)
-
-        # (Opcional) Armazena também uma lista ordenada se quiser acessar facilmente depois
-        self.ordered_regions = [
-            self.regions[region_id] for region_id, _ in sorted_regions
-        ]
 
     def get_cell(self, row, col):
         if 0 <= row < self.rows and 0 <= col < self.cols:
